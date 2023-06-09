@@ -1,4 +1,4 @@
-```python
+
 class MealyError(Exception):
     pass
 
@@ -99,4 +99,3 @@ def raises(func, error):
         assert type(e) == error
     assert output is None
 
-```
