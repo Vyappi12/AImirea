@@ -19,3 +19,23 @@ def main(n):
 # 11101111010101100011110110000
 
 print(main('0x1f617d31'))
+
+
+## decoder
+def main(s):
+    i = int(s)
+    c1 = 0b1111111 & i
+    c2 = 0b1111111111 & (i >> 7)
+    c3 = 0b11 & (i >> 17)
+    c5 = 0b111111111 & (i >> 27)
+    return tuple(map(str, (c1, c2, c3, c5)))
+
+##transcoder
+def transcode(v):
+    k1 = v & 0xff
+    k2 = (v >> 8) & 0x7f
+    k3 = (v >> 15) & 0x7
+    k4 = (v >> 18) & 0x1
+    k3 = (v >> 19) & 0x7
+    d = k4 | (k3 << 1) | (k1 << 4) | (k5 << 12) | (k2 << 15)
+    return str(d)
